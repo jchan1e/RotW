@@ -1,8 +1,10 @@
-LFLAGS=-L/Library/Frameworks/SDL_image.framework/ -lSDL2 -lSDL_image
-CFLAGS=-Wall -g -I/Library/Frameworks/SDL2.framework/Headers/  -I/Library/Frameworks/SDL_image.framework/Headers/ 
+LFLAGS=-L/opt/local/lib/ -lSDL2 -lSDL2_image
+CFLAGS=-Wall -g -I/opt/local/include/SDL2/
 
-Play_RotW:	main.cxx graphics.o
-	#g++ $(CFLAGS) $(LFLAGS)  -o $@
+all: Play_RotW
 
-graphics.o: main.cxx /tmp/
-	echo $^
+Play_RotW:	main.cxx
+	g++ $(CFLAGS) $(LFLAGS) $^ -o $@
+
+clean:
+	rm -r Play_RotW Play_RotW.dSYM
